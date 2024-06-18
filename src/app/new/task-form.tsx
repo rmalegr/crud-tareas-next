@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -21,27 +20,38 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 
 export function TaskForm() {
+  async function createTask(formData: FormData) {
+    "use server"
+    const userName = formData.get("name")
+    const description = formData.get("description")
+    const priority = formData.get("priority")
+    console.log(userName, description, priority)
+
+  }
+
   return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>Create Task</CardTitle>
-        <CardDescription>Fill out the form below to create a new task</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form>
+    <form action={createTask} >
+      <Card className="w-[350px]">
+        <CardHeader>
+          <CardTitle>Create Task</CardTitle>
+          <CardDescription>Fill out the form below to create a new task</CardDescription>
+        </CardHeader>
+        <CardContent>
+
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Name of your task" />
+              <Input name="name" id="name" placeholder="Name of your task" />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">description</Label>
-              <Textarea id="description" placeholder="Type your message here" />
+              <Label htmlFor="description">description</Label>
+              <Textarea
+                name="description"
+                id="description" placeholder="Type your message here" />
             </div>
-
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Priority</Label>
-              <Select>
+              <Label htmlFor="priority">Priority</Label>
+              <Select name="priority">
                 <SelectTrigger id="framework">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
@@ -54,12 +64,13 @@ export function TaskForm() {
               </Select>
             </div>
           </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
-      </CardFooter>
-    </Card>
+
+        </CardContent>
+        <CardFooter className="flex justify-between">
+          <Button variant="outline">Cancel</Button>
+          <Button type="submit">Create task</Button>
+        </CardFooter>
+      </Card>
+    </form>
   )
 }
