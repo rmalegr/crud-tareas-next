@@ -40,17 +40,17 @@ export function TaskForm() {
 
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">Nombre de la tarea</Label>
               <Input name="name" id="name" placeholder="Name of your task" />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="description">description</Label>
+              <Label htmlFor="description">Descripcion</Label>
               <Textarea
                 name="description"
                 id="description" placeholder="Type your message here" />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="priority">Priority</Label>
+              <Label htmlFor="priority">Prioridad</Label>
               <Select name="priority">
                 <SelectTrigger id="framework">
                   <SelectValue placeholder="Select" />
