@@ -44,7 +44,7 @@ export function TaskForm() {
               <Input name="name" id="name" placeholder="Name of your task" />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="description">Descripcion</Label>
+              <Label htmlFor="description">Descripcion1</Label>
               <Textarea
                 name="description"
                 id="description" placeholder="Type your message here" />
