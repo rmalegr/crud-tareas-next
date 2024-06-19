@@ -18,17 +18,11 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { redirect } from "next/dist/server/api-utils"
+import prisma from "@/lib/prisma"
+import { createTask } from "@/actions/tasks-actions"
 
 export function TaskForm() {
-  async function createTask(formData: FormData) {
-    "use server"
-    const userName = formData.get("name")
-    const description = formData.get("description")
-    const priority = formData.get("priority")
-    console.log(userName, description, priority)
-
-  }
-
   return (
     <form action={createTask} >
       <Card className="w-[350px]">

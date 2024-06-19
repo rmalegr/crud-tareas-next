@@ -1,6 +1,25 @@
+//Default home Page 
 
-export default function HomePage() {
+import TaskCard from "@/components/task-card";
+import prisma from "@/lib/prisma"
+
+async function HomePage() {
+  const task = await prisma.task.findMany();
+
   return (
-    <h1>HomePage</h1>
-  );
+    <div className="grid grid-cols-3 gap-4" >
+      {
+        task.map((task) => (
+          <TaskCard key={task.id} task={task} />
+
+        ))
+
+      }
+    </div>
+
+  )
 }
+
+
+
+export default HomePage
