@@ -7,9 +7,11 @@ import {
   CardHeader,
   CardTitle
 } from './ui/card'
-import { Badge } from 'lucide-react'
+import { Badge } from "@/components/ui/badge"
 import clsx from 'clsx'
-import { Button } from './ui/button'
+import { Button, buttonVariants } from './ui/button'
+import TaskButtonDelete from './task-button-delete'
+import Link from 'next/link'
 
 function TaskCard({ task }: { task: Task }) {
   return (
@@ -20,12 +22,10 @@ function TaskCard({ task }: { task: Task }) {
         </CardTitle>
         <Badge className={
           clsx({
-
             "bg-red-500": task.priority === "high",
             "bg-yellow-500": task.priority === "medium",
             "bg-green-500": task.priority === "low",
             "bg-blue-500": task.priority === "urgent"
-
           })
         }>
           {task.priority}
@@ -36,12 +36,9 @@ function TaskCard({ task }: { task: Task }) {
         <span className="text-slate-600">{new Date(task.createdAt).toLocaleDateString()}</span>
       </CardContent>
       <CardFooter className="flex gap-x-2 justify-end">
-        <Button>
-          editar
-        </Button>
-        <Button variant={"destructive"}>
-          delete
-        </Button>
+        <TaskButtonDelete taskId={task.id} />
+        <Link href={`/tasks/${task.id}/edit`} className={buttonVariants({ variant: "secondary" })}>Edit
+        </Link>
       </CardFooter>
     </Card>
   )
