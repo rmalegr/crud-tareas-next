@@ -6,7 +6,7 @@ import { redirect } from "next/navigation"
 //Creamos una tarea -> le pasamos el fromData del dell taskform
  export async function createTask(formData: FormData) {
    "use server"
-    const nameName = formData.get("name")
+    const nameName = formData.get("name")  
     const description = formData.get("description")
     const priority = formData.get("priority")
    
